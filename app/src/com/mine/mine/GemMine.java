@@ -19,18 +19,11 @@ public class GemMine extends Mine{
         double kg = Utilities.GetRandomNumber(0.1, 5);
         double purity = Utilities.GetRandomNumber(0.1, 100);
 
-        switch (rand) {
-            case 0:
-            case 1:
-            case 2:
-                return new RubyGem(kg, purity);
-            case 3:
-            case 4:
-                return new TopasGem(kg, purity);
-            case 5:
-                return new EmeraldGem(kg, purity);
-            default:
-                throw new RuntimeException("This should never trigger but you better check out GemMine.java");
-        }
+        return switch (rand) {
+            case 0, 1, 2 -> new RubyGem(kg, purity);
+            case 3, 4 -> new TopasGem(kg, purity);
+            case 5 -> new EmeraldGem(kg, purity);
+            default -> throw new RuntimeException("This should never trigger but you better check out GemMine.java");
+        };
     }
 }

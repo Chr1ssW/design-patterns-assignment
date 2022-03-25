@@ -1,4 +1,16 @@
 package com.mine.mine;
 
-public class MineralStorage {
+import java.util.HashSet;
+import com.mine.mineral.Mineral;
+
+public class MineralStorage{
+    static HashSet<Mineral> minerals = new HashSet<>();
+
+    public static HashSet<Mineral> getMinerals() {
+        return minerals;
+    }
+
+    public static void addMineral(Mineral mineral) {
+        MineralStorage.addMineral(mineral);
+    }
 }
