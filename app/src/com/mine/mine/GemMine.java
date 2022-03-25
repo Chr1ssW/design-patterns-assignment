@@ -1,7 +1,10 @@
 package com.mine.mine;
 
-import com.mine.mineral.*;
 import com.mine.utility.Utilities;
+import com.mine.mineral.Mineral;
+import com.mine.mineral.EmeraldGem;
+import com.mine.mineral.RubyGem;
+import com.mine.mineral.TopasGem;
 
 public class GemMine extends Mine{
     private static final int MAX_WORKERS = 15;

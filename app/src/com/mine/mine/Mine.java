@@ -3,8 +3,9 @@ package com.mine.mine;
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Queue;
-import com.mine.mineral.*;
+
 import com.mine.people.worker.Worker;
+import com.mine.mineral.Mineral;
 
 public abstract class Mine {
     private HashSet<Worker> workers = new HashSet<Worker>();
@@ -29,11 +30,22 @@ public abstract class Mine {
         return minerals;
     }
 
+    public void mineMineral() {
+        Mineral nextMineral = getNextMineral();
+
+        this.minerals.remove(nextMineral);
+        this.unloadedMinerals.add(nextMineral);
+    }
+
+    private Mineral getNextMineral() {
+        return this.minerals.peek();
+    }
+
     public void addMineral(Mineral mineral) {
         this.minerals.add(mineral);
     }
 
-    public HashSet<Mineral> getUnloadedMinerals() {
+    public Queue<Mineral> getUnloadedMinerals() {
         return unloadedMinerals;
     }
 
@@ -41,12 +53,12 @@ public abstract class Mine {
         this.unloadedMinerals.add(unloadedMineral);
     }
 
-    public HashSet<Mineral> getLoadedMinerals() {
-        return loadedMinerals;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void addLoadedMineral(Mineral loadedMineral) {
-        this.loadedMinerals.add(loadedMineral);
+    public void addCart(Cart cart) {
+        this.cart = cart;
     }
 
     public int getMaxWorkers() {

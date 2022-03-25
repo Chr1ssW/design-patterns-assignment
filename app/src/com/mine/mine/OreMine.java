@@ -1,10 +1,10 @@
 package com.mine.mine;
 
+import com.mine.utility.Utilities;
 import com.mine.mineral.GoldOre;
 import com.mine.mineral.IronOre;
 import com.mine.mineral.Mineral;
 import com.mine.mineral.SilverOre;
-import com.mine.utility.Utilities;
 
 public class OreMine extends Mine{
     private static final int MAX_WORKERS = 20;
@@ -15,7 +15,7 @@ public class OreMine extends Mine{
 
     @Override
     public Mineral GenerateMineral() {
-        int rand = (int)Utilities.GetRandomNumber(0, 5);
+        int rand = (int) Utilities.GetRandomNumber(0, 5);
         double kg = Utilities.GetRandomNumber(0.1, 30);
         double purity = Utilities.GetRandomNumber(0.1, 100);
 

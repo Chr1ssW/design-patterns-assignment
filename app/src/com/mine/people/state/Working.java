@@ -1,4 +1,17 @@
 package com.mine.people.state;
 
-public class Working {
+import com.mine.people.worker.Worker;
+
+public class Working extends State{
+    @Override
+    public void nextState(Worker worker) {
+        worker.setState(new Idle());
+    }
+
+    @Override
+    public void executeState(Worker worker) {
+        worker.decreaseHungerMeter(10);
+        worker.decreaseSanityMeter(20);
+        worker.increaseTimesWorked();
+    }
 }
