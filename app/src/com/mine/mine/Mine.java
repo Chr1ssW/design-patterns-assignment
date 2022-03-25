@@ -8,10 +8,10 @@ import com.mine.people.worker.Worker;
 import com.mine.mineral.Mineral;
 
 public abstract class Mine {
-    private HashSet<Worker> workers = new HashSet<Worker>();
+    private HashSet<Worker> workers = new HashSet<>();
     private Queue<Mineral> minerals = new ArrayDeque<Mineral>();
-    private HashSet<Mineral> unloadedMinerals = new HashSet<Mineral>();
-    private HashSet<Mineral> loadedMinerals = new HashSet<Mineral>();
+    private Queue<Mineral> unloadedMinerals = new ArrayDeque<Mineral>();
+    private Cart cart = new Cart();
     private int maxWorkers;
 
     public Mine(int maxWorkers) {

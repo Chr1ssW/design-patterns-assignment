@@ -1,6 +1,7 @@
 package com.mine.people.worker;
 
-import com.mine.people.state.State;
+import com.mine.mine.Mine;
+import com.mine.mineral.*;
 
 public class Miner extends Worker{
 
