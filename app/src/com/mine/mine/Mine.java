@@ -23,7 +23,9 @@ public abstract class Mine {
     }
 
     public void addWorker(Worker worker) {
-        this.workers.add(worker);
+        if (this.workers.size() < maxWorkers) {
+            this.workers.add(worker);
+        }
     }
 
     public Queue<Mineral> getMinerals() {

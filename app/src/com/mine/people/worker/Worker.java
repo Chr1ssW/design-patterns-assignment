@@ -51,6 +51,7 @@ public abstract class Worker implements Observer {
 
     public void increaseHungerMeter(int hungerMeter) {
         this.hungerMeter += hungerMeter;
+        if (this.hungerMeter > 100) this.hungerMeter = 100;
     }
 
     public void decreaseSanityMeter(int sanityMeter) {
@@ -59,6 +60,7 @@ public abstract class Worker implements Observer {
 
     public void increaseSanityMeter(int sanityMeter) {
         this.sanityMeter += sanityMeter;
+        if (this.sanityMeter > 100) this.sanityMeter = 100;
     }
 
     public State getState() {

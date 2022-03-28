@@ -12,7 +12,13 @@ public class LoadCart extends WorkTypeDecorator {
     }
 
     public void work(Mine mine) {
+        worker.work(mine);
         Mineral nextMineral = mine.getUnloadedMinerals().peek();
+
+//        this.getState().executeState(this);
+        worker.decreaseHungerMeter(10);
+        worker.decreaseSanityMeter(20);
+        worker.increaseTimesWorked();
 
         if (!mine.getCart().isAtMineralStorage()) {
 
