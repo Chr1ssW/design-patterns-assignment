@@ -11,4 +11,9 @@ public class Miner extends Worker{
     public void work(Mine mine) {
         mine.mineMineral();
     }
+
+    @Override
+    public String toString() {
+        return "miner";
+    }
 }

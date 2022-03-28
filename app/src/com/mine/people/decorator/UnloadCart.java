@@ -18,4 +18,9 @@ public class UnloadCart extends WorkTypeDecorator{
             mine.getCart().unloadCart();
         }
     }
+
+    @Override
+    public String toString() {
+        return "cart unloader";
+    }
 }

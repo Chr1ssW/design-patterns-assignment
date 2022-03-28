@@ -1,6 +1,7 @@
 package com.mine.people;
 
 import com.mine.mine.Mine;
+import com.mine.people.state.Working;
 import com.mine.people.worker.Worker;
 
 import java.util.HashSet;

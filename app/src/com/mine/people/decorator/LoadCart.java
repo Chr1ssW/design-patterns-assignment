@@ -22,4 +22,9 @@ public class LoadCart extends WorkTypeDecorator {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "cart loader";
+    }
 }

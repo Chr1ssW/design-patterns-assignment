@@ -13,4 +13,9 @@ public class CartMover extends Worker {
             mine.getCart().setAtMineralStorage(false);
         }
     }
+
+    @Override
+    public String toString() {
+        return "cart mover";
+    }
 }

@@ -9,6 +9,11 @@ public class Sleeping extends State {
     }
 
     @Override
+    public String toString() {
+        return "Sleeping";
+    }
+
+    @Override
     public void executeState(Worker worker) {
         worker.resetTimesWorked();
         worker.decreaseHungerMeter(5);

@@ -21,6 +21,8 @@ public abstract class Worker implements Observer {
         Manager.GetManager().registerObserver(this);
     }
 
+    public abstract String toString();
+
     public abstract void work(Mine mine);
 
     public int getTimesWorked() {
@@ -73,5 +75,9 @@ public abstract class Worker implements Observer {
 
     public final void Update() {
         this.state.nextState(this);
+    }
+
+    public boolean isWorkerOverWorked() {
+        return this.getHungerMeter() <= 0 || this.sanityMeter <= 0 || this.timesWorked >= 5;
     }
 }

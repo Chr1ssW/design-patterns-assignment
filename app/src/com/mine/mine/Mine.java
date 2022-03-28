@@ -7,9 +7,9 @@ import com.mine.people.worker.Worker;
 import com.mine.mineral.Mineral;
 
 public abstract class Mine {
-    private HashSet<Worker> workers = new HashSet<>();
-    private Queue<Mineral> minerals = new ArrayDeque<Mineral>();
-    private Queue<Mineral> unloadedMinerals = new ArrayDeque<Mineral>();
+    private ArrayList<Worker> workers = new ArrayList<>();
+    protected Queue<Mineral> minerals = new ArrayDeque<>();
+    private Queue<Mineral> unloadedMinerals = new ArrayDeque<>();
     private Cart cart = new Cart();
     private int maxWorkers;
 
@@ -69,4 +69,20 @@ public abstract class Mine {
 
     public abstract Mineral GenerateMineral();
 
+    public void removeOverWorkedWorkers() {
+        Iterator workerIterator = workers.iterator();
+
+        while (workerIterator.hasNext()) {
+            Worker worker = (Worker) workerIterator.next();
+            if (worker.isWorkerOverWorked()) {
+                workerIterator.remove();
+            }
+        }
+    }
+
+    public void fireWorker(Worker worker) {
+        if (workers.contains(worker)) {
+            workers.remove(worker);
+        }
+    }
 }
