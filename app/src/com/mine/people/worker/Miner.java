@@ -5,7 +5,7 @@ import com.mine.mineral.*;
 
 public class Miner extends Worker{
 
-    private Miner() {}
+    public Miner() {}
 
     @Override
     public void work(Mine mine) {

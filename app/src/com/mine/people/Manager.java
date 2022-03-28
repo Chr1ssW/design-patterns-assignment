@@ -54,8 +54,12 @@ public class Manager implements Subject{
 
     public void motivateWorkers() {
         for (Mine mine : this.mines) {
+            mine.removeOverWorkedWorkers();
             for (Worker worker : mine.getWorkers()) {
                 worker.doTask();
+                if (worker.getState() instanceof Working) {
+                    worker.work(mine);
+                }
             }
         }
     }

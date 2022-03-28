@@ -11,13 +11,15 @@ public class LoadCart extends WorkTypeDecorator {
         this.worker = worker;
     }
 
-    @Override
     public void work(Mine mine) {
         Mineral nextMineral = mine.getUnloadedMinerals().peek();
 
         if (!mine.getCart().isAtMineralStorage()) {
-            mine.getCart().loadCart(nextMineral);
-            mine.getUnloadedMinerals().remove(nextMineral);
+
+            if (!mine.getCart().isFull()) {
+                mine.getCart().loadCart(nextMineral);
+                mine.getUnloadedMinerals().remove(nextMineral);
+            }
         }
     }
 }

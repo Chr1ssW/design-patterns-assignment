@@ -13,6 +13,7 @@ public class UnloadCart extends WorkTypeDecorator{
 
     @Override
     public void work(Mine mine) {
+        worker.work(mine);
         if (mine.getCart().isAtMineralStorage()) {
             mine.getCart().unloadCart();
         }

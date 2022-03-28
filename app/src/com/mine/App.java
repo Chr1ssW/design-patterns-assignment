@@ -35,6 +35,7 @@ public class App {
             switch (choice) {
                 case "1" -> createMines();
                 case "2" -> manageMines();
+                case "3" -> observeMineralStorage();
                 default -> home();
             }
         } catch (IOException e) {

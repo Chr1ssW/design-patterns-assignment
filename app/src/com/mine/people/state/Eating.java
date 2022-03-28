@@ -14,4 +14,9 @@ public class Eating extends State{
         worker.increaseHungerMeter(20);
         worker.increaseSanityMeter(10);
     }
+
+    @Override
+    public String toString() {
+        return "Eating";
+    }
 }

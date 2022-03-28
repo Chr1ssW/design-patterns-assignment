@@ -1,9 +1,8 @@
 package com.mine.mine;
 
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.Queue;
+import java.util.*;
 
+import com.mine.people.Manager;
 import com.mine.people.worker.Worker;
 import com.mine.mineral.Mineral;
 
@@ -15,10 +14,11 @@ public abstract class Mine {
     private int maxWorkers;
 
     public Mine(int maxWorkers) {
+        Manager.GetManager().addMine(this);
         this.maxWorkers = maxWorkers;
     }
 
-    public HashSet<Worker> getWorkers() {
+    public ArrayList<Worker> getWorkers() {
         return workers;
     }
 
@@ -33,8 +33,10 @@ public abstract class Mine {
     public void mineMineral() {
         Mineral nextMineral = getNextMineral();
 
-        this.minerals.remove(nextMineral);
-        this.unloadedMinerals.add(nextMineral);
+        if (nextMineral != null) {
+            this.minerals.remove(nextMineral);
+            this.unloadedMinerals.add(nextMineral);
+        }
     }
 
     private Mineral getNextMineral() {

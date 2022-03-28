@@ -14,4 +14,9 @@ public class Idle extends State{
         worker.decreaseSanityMeter(1);
         worker.decreaseHungerMeter(1);
     }
+
+    @Override
+    public String toString() {
+        return "Idle";
+    }
 }
