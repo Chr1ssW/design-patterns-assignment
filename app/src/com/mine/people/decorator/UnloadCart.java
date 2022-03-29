@@ -5,10 +5,8 @@ import com.mine.mineral.Mineral;
 import com.mine.people.worker.Worker;
 
 public class UnloadCart extends WorkTypeDecorator{
-    Worker worker;
-
     public UnloadCart(Worker worker) {
-        this.worker = worker;
+        super(worker);
     }
 
     @Override
@@ -21,6 +19,6 @@ public class UnloadCart extends WorkTypeDecorator{
 
     @Override
     public String toString() {
-        return "cart unloader";
+        return "Cart unloader";
     }
 }

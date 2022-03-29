@@ -5,10 +5,9 @@ import com.mine.mineral.Mineral;
 import com.mine.people.worker.Worker;
 
 public class LoadCart extends WorkTypeDecorator {
-    Worker worker;
 
     public LoadCart(Worker worker) {
-        this.worker = worker;
+        super(worker);
     }
 
     public void work(Mine mine) {
@@ -31,6 +30,6 @@ public class LoadCart extends WorkTypeDecorator {
 
     @Override
     public String toString() {
-        return "cart loader";
+        return "Cart loader";
     }
 }
