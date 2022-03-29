@@ -11,6 +11,9 @@ public class GemMine extends Mine{
 
     public GemMine() {
         super(MAX_WORKERS);
+        for (int i = 0; i < 1000; i++) {
+            super.minerals.add(GenerateMineral());
+        }
     }
 
     @Override

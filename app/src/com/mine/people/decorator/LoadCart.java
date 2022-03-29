@@ -5,19 +5,31 @@ import com.mine.mineral.Mineral;
 import com.mine.people.worker.Worker;
 
 public class LoadCart extends WorkTypeDecorator {
-    Worker worker;
 
     public LoadCart(Worker worker) {
-        this.worker = worker;
+        super(worker);
+    }
+
+    public void work(Mine mine) {
+        worker.work(mine);
+        Mineral nextMineral = mine.getUnloadedMinerals().peek();
+
+//        this.getState().executeState(this);
+        worker.decreaseHungerMeter(10);
+        worker.decreaseSanityMeter(20);
+        worker.increaseTimesWorked();
+
+        if (!mine.getCart().isAtMineralStorage()) {
+
+            if (!mine.getCart().isFull()) {
+                mine.getCart().loadCart(nextMineral);
+                mine.getUnloadedMinerals().remove(nextMineral);
+            }
+        }
     }
 
     @Override
-    public void work(Mine mine) {
-        Mineral nextMineral = mine.getUnloadedMinerals().peek();
-
-        if (!mine.getCart().isAtMineralStorage()) {
-            mine.getCart().loadCart(nextMineral);
-            mine.getUnloadedMinerals().remove(nextMineral);
-        }
+    public String toString() {
+        return "Cart loader";
     }
 }

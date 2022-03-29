@@ -9,6 +9,12 @@ public class Working extends State{
     }
 
     @Override
+    public String toString() {
+        return "Working";
+    }
+
+
+    @Override
     public void executeState(Worker worker) {
         worker.decreaseHungerMeter(10);
         worker.decreaseSanityMeter(20);

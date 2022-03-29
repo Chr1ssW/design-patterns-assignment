@@ -1,29 +1,31 @@
 package com.mine.mine;
 
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.Queue;
+import java.util.*;
 
+import com.mine.people.Manager;
 import com.mine.people.worker.Worker;
 import com.mine.mineral.Mineral;
 
 public abstract class Mine {
-    private HashSet<Worker> workers = new HashSet<>();
-    private Queue<Mineral> minerals = new ArrayDeque<Mineral>();
-    private Queue<Mineral> unloadedMinerals = new ArrayDeque<Mineral>();
+    private ArrayList<Worker> workers = new ArrayList<>();
+    protected Queue<Mineral> minerals = new ArrayDeque<>();
+    private Queue<Mineral> unloadedMinerals = new ArrayDeque<>();
     private Cart cart = new Cart();
     private int maxWorkers;
 
     public Mine(int maxWorkers) {
+        Manager.GetManager().addMine(this);
         this.maxWorkers = maxWorkers;
     }
 
-    public HashSet<Worker> getWorkers() {
+    public ArrayList<Worker> getWorkers() {
         return workers;
     }
 
     public void addWorker(Worker worker) {
-        this.workers.add(worker);
+        if (this.workers.size() < maxWorkers) {
+            this.workers.add(worker);
+        }
     }
 
     public Queue<Mineral> getMinerals() {
@@ -33,8 +35,10 @@ public abstract class Mine {
     public void mineMineral() {
         Mineral nextMineral = getNextMineral();
 
-        this.minerals.remove(nextMineral);
-        this.unloadedMinerals.add(nextMineral);
+        if (nextMineral != null) {
+            this.minerals.remove(nextMineral);
+            this.unloadedMinerals.add(nextMineral);
+        }
     }
 
     private Mineral getNextMineral() {
@@ -67,4 +71,20 @@ public abstract class Mine {
 
     public abstract Mineral GenerateMineral();
 
+    public void removeOverWorkedWorkers() {
+        Iterator workerIterator = workers.iterator();
+
+        while (workerIterator.hasNext()) {
+            Worker worker = (Worker) workerIterator.next();
+            if (worker.isWorkerOverWorked()) {
+                workerIterator.remove();
+            }
+        }
+    }
+
+    public void fireWorker(Worker worker) {
+        if (workers.contains(worker)) {
+            workers.remove(worker);
+        }
+    }
 }

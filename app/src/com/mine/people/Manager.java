@@ -1,6 +1,7 @@
 package com.mine.people;
 
 import com.mine.mine.Mine;
+import com.mine.people.state.Working;
 import com.mine.people.worker.Worker;
 
 import java.util.HashSet;
@@ -54,8 +55,12 @@ public class Manager implements Subject{
 
     public void motivateWorkers() {
         for (Mine mine : this.mines) {
+            mine.removeOverWorkedWorkers();
             for (Worker worker : mine.getWorkers()) {
                 worker.doTask();
+                if (worker.getState() instanceof Working) {
+                    worker.work(mine);
+                }
             }
         }
     }

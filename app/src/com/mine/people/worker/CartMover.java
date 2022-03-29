@@ -7,9 +7,15 @@ public class CartMover extends Worker {
     @Override
     public void work(Mine mine) {
         if (!mine.getCart().isAtMineralStorage() && mine.getCart().isFull()) {
+
             mine.getCart().setAtMineralStorage(true);
-        } else if (mine.getCart().isAtMineralStorage()) {
+        } else if (mine.getCart().isAtMineralStorage() && !mine.getCart().isFull()) {
             mine.getCart().setAtMineralStorage(false);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "cart mover";
     }
 }
